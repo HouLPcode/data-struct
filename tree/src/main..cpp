@@ -55,17 +55,19 @@ void main()
 	}
 	printf("\n\n");
 
+	printf("tree hight is %d\n", get_hight(pTree));
+
 	//printf("levelOrder: ");
 	//levelOrder(pTree);
 	//printf("\n\n");
 
-	printf("preOrder: ");
-	preOrder(pTree);
-	printf("\n\n");
+	//printf("preOrder: ");
+	//preOrder(pTree);
+	//printf("\n\n");
 
-	printf("preOrder: ");
-	preOrder2(pTree);
-	printf("\n\n");
+	//printf("preOrder: ");
+	//preOrder2(pTree);
+	//printf("\n\n");
 
 	//printf("inOrder: ");
 	//inOrder(pTree);

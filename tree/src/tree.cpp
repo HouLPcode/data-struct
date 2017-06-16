@@ -120,6 +120,14 @@ BitNode* Insert(int x,BitNode *T)
 	return T;
 }
 
+#define MAX(A,B) ((A) > (B) ? (A) : (B))
+int get_hight(BitNode *T)
+{
+	if (T == NULL)
+		return 0;
+	return 1 + MAX(get_hight(T->left), get_hight(T->right));
+}
+
 ////先序方式创建树，'#'表示结束
 //BitNode* CreateTree(BitNode *&T) {  // 算法6.4
 //  // 按先序次序输入二叉树中结点的值（一个字符），空格字符表示空树，

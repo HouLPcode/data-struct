@@ -17,5 +17,6 @@ void postOrder2(BitNode *T);
 void levelOrder(BitNode *T);//²ã´Î±éÀú
 //BitNode* creatTree(BitNode *&T);
 BitNode* Insert(int x,BitNode *T);
+int get_hight(BitNode *T);
 
 #endif
