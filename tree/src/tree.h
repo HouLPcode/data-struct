@@ -9,9 +9,11 @@ typedef struct BitNode{
 }BitNode;
 
 void preOrder(BitNode *T);
+void preOrder2(BitNode *T);
 void inOrder(BitNode *T);
 void inOrder2(BitNode *T);//·ÇµÝ¹é
 void postOrder(BitNode *T);
+void postOrder2(BitNode *T);
 void levelOrder(BitNode *T);//²ã´Î±éÀú
 //BitNode* creatTree(BitNode *&T);
 BitNode* Insert(int x,BitNode *T);

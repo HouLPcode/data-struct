@@ -14,6 +14,26 @@ void preOrder(BitNode *T)
 	}
 }
 
+void preOrder2(BitNode *T)
+{
+	SqStack s;
+	InitStack(s);
+	BitNode* tmp;
+
+	if (T == NULL)
+		return;
+	push(s, T);
+	while (!isEmpty_stack(s))
+	{
+		pop(s, tmp);
+		printf("%d ", tmp->elem);
+		if (tmp->right != NULL)
+			push(s, tmp->right);
+		if (tmp->left != NULL)
+			push(s, tmp->left);
+	}
+}
+
 void inOrder(BitNode *T)
 {
 	if(T != NULL)
@@ -54,6 +74,11 @@ void postOrder(BitNode *T)
 		postOrder(T->right);
 		printf("%d ",T->elem);
 	}
+}
+
+void postOrder2(BitNode *T)
+{
+	
 }
 
 void levelOrder(BitNode *T)

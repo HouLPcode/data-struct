@@ -55,17 +55,17 @@ void main()
 	}
 	printf("\n\n");
 
-	printf("levelOrder: ");
-	levelOrder(pTree);
+	//printf("levelOrder: ");
+	//levelOrder(pTree);
+	//printf("\n\n");
+
+	printf("preOrder: ");
+	preOrder(pTree);
 	printf("\n\n");
 
-	//printf("preOrder: ");
-	//preOrder(pTree);
-	//printf("\n\n");
-
-	//printf("preOrder: ");
-	////preOrder2(pTree);
-	//printf("\n\n");
+	printf("preOrder: ");
+	preOrder2(pTree);
+	printf("\n\n");
 
 	//printf("inOrder: ");
 	//inOrder(pTree);
