@@ -127,44 +127,39 @@ BitNode* BST_insert(BitNode *T, elemType x)
 	}
 	return T;
 }
-
+//返回删除节点后树的根节点
 BitNode* BST_delete(BitNode *T, elemType x)
 {
-	BitNode *p = T, *tmp = NULL, *fp = T; 
-	while (p != NULL)
+	BitNode *tmp; 
+	if (T == NULL)	//not find
 	{
-		if (x == p->elem)
-			break;
-		fp = p;
-		p = x > p->elem ? p->right : p->left;
-	}
-	if (p == NULL)	//not find
-	{
-		printf("not found");
+		printf("not found the element");
 		return NULL;
 	}
-	else if (!p->left && !p->right)//叶子节点
+	if (x < T->elem)
+		 T->left = BST_delete(T->left, x); //此处一定要将 T->left 指向返回值，保证树的链接性
+	else if (x > T->elem)
+		 T->right = BST_delete(T->right, x);
+	else 	//当前节点就是要删除的节点
 	{
-		if (fp->left == p)
-			fp->left = NULL;
-		if (fp->right == p)
-			fp->right = NULL;
-		free(p);
-	}
-	else if (!p->left && p->right)//没有左子树的节点
-	{
-		p = p->right;
-		free(p);
-	}
-	else if (p->left && !p->right)//没有右子树的节点
-	{
-		p = p->left;
-	}
-	else if (p->left && !p->right)//有左右子树
-	{
-		tmp = BST_findMin(p->right);
-		p->elem = tmp->elem;
-		BST_delete(p->right, tmp->elem);
+		if (!T->left)//没有左子树或者叶子节点
+		{
+			tmp = T;
+			T = T->right;
+			free(tmp);
+		}
+		else if (!T->right)//没有右子树的节点
+		{
+			tmp = T;
+			T = T->left;
+			free(tmp);
+		}
+		else if (T->left && T->right)//有左右子树
+		{
+			tmp = BST_findMin(T->right);
+			T->elem = tmp->elem;
+			T->right = BST_delete(T->right, tmp->elem);
+		}
 	}
 	return T;
 }

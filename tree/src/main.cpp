@@ -58,32 +58,39 @@ void test_BST()
 
 	printf("levelOrder: \n");
 	levelOrder(pTree);
-	printf("\n\n");
+	printf("\n");
 
 	//删除叶子节点
+	printf("delete node 3\n");
 	BST_delete(pTree, 3);
 	levelOrder(pTree);
 	printf("\n");
 	//删除不存在节点
+	printf("delete node 3\n");
 	BST_delete(pTree, 3);
 	levelOrder(pTree);
 	printf("\n");
 	//删除无右子树节点
+	printf("delete node 2\n");
 	BST_delete(pTree, 2);
 	levelOrder(pTree);
 	printf("\n");
 	//删除左右均有节点
+	printf("delete node 12\n");
 	BST_delete(pTree, 12);
 	levelOrder(pTree);
 	printf("\n");
 	//删除无左子树节点
+	printf("delete node 14\n");
 	BST_delete(pTree, 14);
 	levelOrder(pTree);
 	printf("\n");
 
+	printf("add node 7\n");
 	BST_insert(pTree, 7);
 	levelOrder(pTree);
 	printf("\n");
+	printf("add node 12\n");
 	BST_insert(pTree, 12);
 	levelOrder(pTree);
 	printf("\n");
