@@ -139,7 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\main..cpp" />
+    <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\queue.cpp" />
     <ClCompile Include="src\stack.cpp" />
     <ClCompile Include="src\tree.cpp" />

@@ -16,7 +16,13 @@ void postOrder(BitNode *T);
 void postOrder2(BitNode *T);
 void levelOrder(BitNode *T);//²ã´Î±éÀú
 //BitNode* creatTree(BitNode *&T);
-BitNode* Insert(int x,BitNode *T);
 int get_hight(BitNode *T);
+
+//¶þ²æÅÅÐòÊ÷
+BitNode* BST_insert(BitNode *T, elemType x);
+BitNode* BST_delete(BitNode *T, elemType x);
+BitNode* BST_find(BitNode *T, elemType x);
+BitNode* BST_find2(BitNode *T, elemType x);
+BitNode* BST_findMin(BitNode *T);
 
 #endif

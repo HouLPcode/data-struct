@@ -98,34 +98,108 @@ void levelOrder(BitNode *T)
 	}
 }
 
-//构建二叉排序树
-BitNode* Insert(int x,BitNode *T)
-{
-	if(T == NULL)
-	{
-		T = (BitNode*)malloc(sizeof(struct BitNode));
-		if(T == NULL)
-			return NULL;
-		T->elem = x;
-		T->left = T->right = NULL;
-	}
-	else if(x < T->elem)
-	{
-		T->left = Insert(x,T->left);
-	}
-	else if(x > T->elem)
-	{
-		T->right = Insert(x,T->right);
-	}
-	return T;
-}
-
 #define MAX(A,B) ((A) > (B) ? (A) : (B))
 int get_hight(BitNode *T)
 {
 	if (T == NULL)
 		return 0;
 	return 1 + MAX(get_hight(T->left), get_hight(T->right));
+}
+
+//构建二叉排序树,返回根节点
+BitNode* BST_insert(BitNode *T, elemType x)
+{
+	if (T == NULL)
+	{
+		T = (BitNode*)malloc(sizeof(struct BitNode));
+		if (T == NULL)
+			return NULL;
+		T->elem = x;
+		T->left = T->right = NULL;
+	}
+	else if (x < T->elem)
+	{
+		T->left = BST_insert(T->left, x);
+	}
+	else if (x > T->elem)
+	{
+		T->right = BST_insert(T->right, x);
+	}
+	return T;
+}
+
+BitNode* BST_delete(BitNode *T, elemType x)
+{
+	BitNode *p = T, *tmp = NULL, *fp = T; 
+	while (p != NULL)
+	{
+		if (x == p->elem)
+			break;
+		fp = p;
+		p = x > p->elem ? p->right : p->left;
+	}
+	if (p == NULL)	//not find
+	{
+		printf("not found");
+		return NULL;
+	}
+	else if (!p->left && !p->right)//叶子节点
+	{
+		if (fp->left == p)
+			fp->left = NULL;
+		if (fp->right == p)
+			fp->right = NULL;
+		free(p);
+	}
+	else if (!p->left && p->right)//没有左子树的节点
+	{
+		p = p->right;
+		free(p);
+	}
+	else if (p->left && !p->right)//没有右子树的节点
+	{
+		p = p->left;
+	}
+	else if (p->left && !p->right)//有左右子树
+	{
+		tmp = BST_findMin(p->right);
+		p->elem = tmp->elem;
+		BST_delete(p->right, tmp->elem);
+	}
+	return T;
+}
+
+BitNode* BST_find(BitNode *T, elemType x)
+{
+	if (T == NULL)
+		return NULL;
+	if (T->elem == x)
+		return T;
+	if (x < T->elem)
+		return BST_find(T->left, x);
+	if (x > T->elem)
+		return BST_find(T->right, x);
+}
+
+BitNode* BST_find2(BitNode *T, elemType x)
+{
+	while (T != NULL)
+	{
+		if (x == T->elem)
+			break;
+		T = x > T->elem ? T->right : T->left;
+	}
+	return T;
+}
+
+//返回最小值的节点指针
+BitNode* BST_findMin(BitNode *T)
+{
+	if (T == NULL)
+		return NULL;
+	while (T->left != NULL)
+		T = T->left;
+	return T;
 }
 
 ////先序方式创建树，'#'表示结束
